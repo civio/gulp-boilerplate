@@ -17,14 +17,14 @@ const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 
 
-gulp.task('default', ['sass', 'babel', 'html'], () => {
+gulp.task('default', ['sass', 'babel'], () => {
     browserSync.init({
         server: {
-            baseDir: "./dist/"
+            baseDir: "./"
         },
-        port: 4000
+        port: 5000
     });
-    gulp.watch("./*.html", ['html']);
+    gulp.watch("./*.html").on('change', browserSync.reload); 
     gulp.watch('./src/scss/**/*.scss', ['sass']);
     gulp.watch('./src/js/**/*.js', ['babel']);
 });
@@ -36,12 +36,6 @@ gulp.task('sass', () => {
         .pipe(postcss(plugins))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist/css'))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('html', () => {
-    return gulp.src('./index.html')
-        .pipe(gulp.dest('./dist'))
         .pipe(browserSync.stream());
 });
 
