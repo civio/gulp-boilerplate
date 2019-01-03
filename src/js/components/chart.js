@@ -37,7 +37,6 @@ export default class Chart {
     // Setup config object
     this.config = defaultsDeep(config, configDefaults)
     this.width = 0
-    console.log(this.config.lang)
     // Set formatDefaultLocale based on config.lang
     formatDefaultLocale({
       decimal: (this.config.lang === 'es') ? ',' : '.',
@@ -47,6 +46,9 @@ export default class Chart {
     // Set default formats after formatDefaultLocale defined
     this.config.format.x = timeFormat('%B %d, %Y')
     this.config.format.y = format('$,.1f')
+    // Set data accesors
+    this.x = (d) => d.date
+    this.y = (d) => d.value
     // Set chart & tooltip
     this.setChart()
     this.setTooltip()
@@ -66,7 +68,7 @@ export default class Chart {
   setScales () {
     // setup x scale
     this.scaleX = scaleUtc()
-      .domain(this.scaleXDomain()).nice()
+      .domain(this.scaleXDomain())
       .range(this.scaleXRange())
     // setup y scale
     this.scaleY = scaleLinear()
@@ -109,7 +111,6 @@ export default class Chart {
 
   setup (data) {
     this.data = data
-    this.setDataAccessors()
     this.onResize()
     this.setScales()
     this.setAxis()
@@ -163,12 +164,7 @@ export default class Chart {
     return this
   }
 
-  // Setters & getters
-
-  setDataAccessors () {
-    this.x = (d) => d.date
-    this.y = (d) => d.value
-  }
+  // Getters
 
   // Setup axis renderers & formats
   axisRendererX () {
