@@ -12,7 +12,8 @@ const formatDate = timeFormat('%Y-%m-%d')
 const parseDate = timeParse('%Y-%m-%d')
 
 const chart = new AreaChart('#chart', {
-  heightRatio: 9/16,
+  height: 320,
+  // aspectRatio: 2,
   margin: {
     top: 10,
     right: 12,

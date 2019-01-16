@@ -9,8 +9,9 @@ import {debounce, defaultsDeep} from 'lodash'
 import tooltip from './tooltip'
 
 const configDefaults = {
+  // we can define an aspectRatio to calculate height or define a fixed height
   aspectRatio: 16 / 9,
-  // force fixed width & height
+  height: null,
   lang: 'es',
   margin: {
     top: 0,
@@ -144,7 +145,8 @@ export default class Chart {
     let currentWidth = this.el.node().offsetWidth
     if (currentWidth !== this.width) {
       this.width = currentWidth
-      this.height = Math.round(this.width / this.config.aspectRatio)
+      // force height if defined in config, otherwise use aspectRatio
+      this.height = (this.config.height) ? this.config.height : Math.round(this.width / this.config.aspectRatio)
       this.resize()
     }
   }
