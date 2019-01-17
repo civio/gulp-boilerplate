@@ -8,10 +8,6 @@
   },
   "author": "Jesper Orb",
   "license": "ISC",
-  "dependencies": {
-    "d3": "^5.7.0",
-    "lodash": "^4.17.11"
-  },
   "devDependencies": {
     "autoprefixer": "^6.7.6",
     "babel-preset-env": "^1.2.0",

@@ -3,13 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Civio Graphs</title>
+  <link rel="stylesheet" href="https://civio.es/assets/main.min.css">
   <link rel="stylesheet" type="text/css" href="dist/css/main.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="https://civio.es/assets/img/favicon-32x32.png">
 </head>
 <body>
-  <div id="chart">
-    <svg></svg>
+  <div id="chart" class="chart">
+    <div class="tooltip">
+      <span class="label x"></span><br/>
+      <strong class="label y"></strong>
+    </div>
   </div>
   <script src="dist/js/main.js"></script>
 </body>
