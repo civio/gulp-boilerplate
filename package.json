@@ -9,6 +9,7 @@
   "author": "Jesper Orb",
   "license": "ISC",
   "dependencies": {
+    "civio-graphs-lib": "github:civio/civio-graphs-lib",
     "d3": "^5.7.0",
     "lodash": "^4.17.11"
   },
