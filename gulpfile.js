@@ -22,7 +22,7 @@ gulp.task('default', ['sass', 'babel'], () => {
         server: {
             baseDir: "./"
         },
-        port: 5000
+        port: 7000
     });
     gulp.watch("./*.html").on('change', browserSync.reload); 
     gulp.watch('./src/scss/**/*.scss', ['sass']);
